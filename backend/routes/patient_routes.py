@@ -12,6 +12,26 @@ from models import (
     UnderstandReportRequest,
 )
 from auth import get_current_user
+from database import (
+    create_chat_session,
+    delete_stale_chat_sessions,
+    save_chat_message,
+    get_chat_history,
+    get_report_by_id,
+    get_reports_for_patient,
+    update_report_with_diagnosis,
+    get_doctor_patient_messages,
+    save_doctor_patient_message,
+    update_report_status,
+    get_user_by_id,
+    create_doctor_notification,
+)
+from services.ai_doctor import (
+    chat_response,
+    generate_diagnosis_from_chat,
+    explain_diagnosis,
+    translate_message,
+)
 
 _IS_LAMBDA = bool(os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
 _UPLOADS_DIR = (
@@ -52,26 +72,7 @@ def _image_from_attachment(attachment_url: str | None) -> tuple[str | None, str 
     return b64, media_type
 
 
-from database import (
-    create_chat_session,
-    delete_stale_chat_sessions,
-    save_chat_message,
-    get_chat_history,
-    get_report_by_id,
-    get_reports_for_patient,
-    update_report_with_diagnosis,
-    get_doctor_patient_messages,
-    save_doctor_patient_message,
-    update_report_status,
-    get_user_by_id,
-    create_doctor_notification,
-)
-from services.ai_doctor import (
-    chat_response,
-    generate_diagnosis_from_chat,
-    explain_diagnosis,
-    translate_message,
-)
+
 
 router = APIRouter(prefix="/api/patient", tags=["patient"])
 
