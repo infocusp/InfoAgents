@@ -2,7 +2,6 @@
 
 import aiosqlite
 import os
-from datetime import datetime
 
 IS_LAMBDA = bool(os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
 

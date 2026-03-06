@@ -1,6 +1,6 @@
 """Pydantic models for request/response validation."""
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
 

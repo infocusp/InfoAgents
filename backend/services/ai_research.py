@@ -1,6 +1,5 @@
 """AI Research Assistant — provides medical research support for doctors."""
 
-import os
 from pathlib import Path
 from dotenv import load_dotenv
 import aisuite as ai
