@@ -72,8 +72,6 @@ def _image_from_attachment(attachment_url: str | None) -> tuple[str | None, str 
     return b64, media_type
 
 
-
-
 router = APIRouter(prefix="/api/patient", tags=["patient"])
 
 
